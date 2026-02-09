@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard UI</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        background: #000;
+        color: #e5e7eb;
+      }
+
+      /* ===== Layout ===== */
+      .dashboard {
+        display: flex;
+        height: 100vh;
+        gap: 15px;
+        padding: 15px;
+      }
+
+      /* ===== Sidebar ===== */
+      .sidebar {
+        width: 220px;
+        background: #171717;
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .logo {
+        color: #3fffd7;
+        margin-bottom: 30px;
+      }
+
+      .sidebar nav a {
+        display: block;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 14px;
+        cursor: pointer;
+        color: #9ca3af;
+      }
+
+      .sidebar nav a:hover,
+      .sidebar nav .active {
+        color: #3fffd7;
+        background: #1f1f1f;
+      }
+
+      /* ===== Main ===== */
+      .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow: hidden;
+      }
+
+      /* ===== Topbar ===== */
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: #171717;
+        border-radius: 22px;
+      }
+
+      .profile {
+        padding: 10px 20px;
+        border-radius: 10px;
+        background: transparent;
+        border: 1px solid #64ffda;
+        color: #64ffda;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .profile:hover {
+        background: #64ffda;
+        color: #000;
+      }
+
+      /* ===== Cards ===== */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .card {
+        background: #171717;
+        padding: 22px;
+        border-radius: 22px;
+      }
+
+      .card h3 {
+        font-size: 14px;
+        color: #9ca3af;
+      }
+
+      .card p {
+        margin-top: 10px;
+        font-size: 26px;
+        font-weight: bold;
+        color: #3fffd7;
+      }
+
+      /* ===== Table Section (Dynamic Height) ===== */
+      .table-section {
+        background: #171717;
+        padding: 22px;
+        border-radius: 22px;
+        flex: 1; /* ⭐ dynamic height */
+        overflow-y: auto;
+      }
+
+      .table-section h2 {
+        margin-bottom: 15px;
+        color: #3fffd7;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 14px;
+        border-bottom: 1px solid #1f2933;
+        text-align: left;
+      }
+
+      th {
+        color: #9ca3af;
+        font-weight: 500;
+      }
+
+      .success {
+        color: #22c55e;
+      }
+      .pending {
+        color: #facc15;
+      }
+      .failed {
+        color: #ef4444;
+      }
+
+      /* ==================================================
+         RESPONSIVE (BOOTSTRAP BREAKPOINT STYLE)
+         ================================================== */
+
+      /* xs & sm */
+      @media (max-width: 767px) {
+        .dashboard {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .sidebar nav {
+          display: flex;
+          gap: 10px;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
+        }
+      }
+
+      /* md */
+      @media (min-width: 768px) and (max-width: 991px) {
+        .cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .sidebar {
+          width: 180px;
+        }
+      }
+
+      /* lg+ */
+      @media (min-width: 992px) {
+        .cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h2 class="logo">DashUI</h2>
+        <nav>
+          <a class="active">Dashboard</a>
+          <a>Users</a>
+          <a>Analytics</a>
+          <a>Settings</a>
+        </nav>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <!-- Topbar -->
+        <header class="topbar">
+          <h1>Dashboard</h1>
+          <button class="profile" onclick="logout()">Logout</button>
+        </header>
+
+        <!-- Cards -->
+        <section class="cards">
+          <div class="card">
+            <h3>Total Users</h3>
+            <p>1,245</p>
+          </div>
+          <div class="card">
+            <h3>Revenue</h3>
+            <p>₹84,500</p>
+          </div>
+          <div class="card">
+            <h3>Orders</h3>
+            <p>320</p>
+          </div>
+        </section>
+
+        <!-- Table -->
+        <section class="table-section">
+          <h2>Recent Activity</h2>
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+            <tr>
+              <td>John</td>
+              <td class="success">Completed</td>
+              <td>08 Feb</td>
+            </tr>
+            <tr>
+              <td>Alice</td>
+              <td class="pending">Pending</td>
+              <td>07 Feb</td>
+            </tr>
+            <tr>
+              <td>Mark</td>
+              <td class="failed">Failed</td>
+              <td>06 Feb</td>
+            </tr>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
