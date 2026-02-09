@@ -69,7 +69,7 @@ const registerData = async (userDetails, form) => {
       form.reset();
       setTimeout(() => {
         window.location.href = "login.html";
-      }, 3000);
+      }, 1000);
     } else {
       success.textContent = data.message;
       success.className = "message error";
@@ -130,7 +130,7 @@ const loginData = async (logInDetails, form) => {
       form.reset();
       setTimeout(() => {
         window.location.href = "dashboard.html";
-      }, 3000);
+      }, 1000);
     } else {
       success.textContent = data.message;
       success.className = "message error";
