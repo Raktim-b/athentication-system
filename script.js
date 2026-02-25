@@ -51,7 +51,7 @@ const registerData = async (userDetails, form) => {
 
   try {
     const response = await fetch(
-      "https://news-blog-api.onrender.com/api/auth/register",
+      "https://authenticationapi-p7aa.onrender.com/api/auth/register",
       {
         method: "POST",
         headers: {
@@ -62,6 +62,7 @@ const registerData = async (userDetails, form) => {
     );
     const data = await response.json();
     console.log(response);
+    console.log(data);
 
     if (response?.status === 201) {
       success.textContent = data.message;
@@ -109,7 +110,7 @@ const loginData = async (logInDetails, form) => {
   success.textContent = "";
   try {
     const response = await fetch(
-      "https://news-blog-api.onrender.com/api/auth/login",
+      "https://authenticationapi-p7aa.onrender.com/api/auth/login",
       {
         method: "POST",
         headers: {
@@ -144,15 +145,16 @@ const currentPage = window.location.pathname;
 
 if (currentPage.includes("dashboard.html")) {
   const token = localStorage.getItem("token");
-  const user = localStorage.getItem("user");
+  // const user = localStorage.getItem("user");
 
-  if (!token || !user) {
+  // if (!token || !user) {
+  if (!token) {
     window.location.href = "login.html";
   }
 }
 
 const logout = () => {
   localStorage.removeItem("token");
-  localStorage.removeItem("user");
+  // localStorage.removeItem("user");
   window.location.href = "login.html";
 };
