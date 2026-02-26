@@ -124,13 +124,13 @@ const loginData = async (logInDetails, form) => {
     console.log(data);
 
     if (response?.status === 200) {
-      localStorage.setItem("token", data.accessToken);
+      localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
       success.textContent = data.message;
       success.className = "message success";
       form.reset();
       setTimeout(() => {
-        window.location.href = "dashboard.html";
+        // window.location.href = "dashboard.html";
       }, 1000);
     } else {
       success.textContent = data.message;
