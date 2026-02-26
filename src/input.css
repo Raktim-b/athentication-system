@@ -6,7 +6,6 @@
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
-  background: #1a33b3;
 }
 .wrpr::before {
   content: "";
