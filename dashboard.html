@@ -3,277 +3,254 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard UI</title>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", sans-serif;
-      }
-
-      body {
-        height: 100vh;
-        background: #000;
-        color: #e5e7eb;
-      }
-
-      /* ===== Layout ===== */
-      .dashboard {
-        display: flex;
-        height: 100vh;
-        gap: 15px;
-        padding: 15px;
-      }
-
-      /* ===== Sidebar ===== */
-      .sidebar {
-        width: 220px;
-        background: #171717;
-        padding: 20px;
-        border-radius: 22px;
-      }
-
-      .logo {
-        color: #3fffd7;
-        margin-bottom: 30px;
-      }
-
-      .sidebar nav a {
-        display: block;
-        padding: 12px;
-        margin-bottom: 10px;
-        border-radius: 14px;
-        cursor: pointer;
-        color: #9ca3af;
-      }
-
-      .sidebar nav a:hover,
-      .sidebar nav .active {
-        color: #3fffd7;
-        background: #1f1f1f;
-      }
-
-      /* ===== Main ===== */
-      .main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        overflow: hidden;
-      }
-
-      /* ===== Topbar ===== */
-      .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        background: #171717;
-        border-radius: 22px;
-      }
-
-      .profile {
-        padding: 10px 20px;
-        border-radius: 10px;
-        background: transparent;
-        border: 1px solid #64ffda;
-        color: #64ffda;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-
-      .profile:hover {
-        background: #64ffda;
-        color: #000;
-      }
-
-      /* ===== Cards ===== */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-      }
-
-      .card {
-        background: #171717;
-        padding: 22px;
-        border-radius: 22px;
-      }
-
-      .card h3 {
-        font-size: 14px;
-        color: #9ca3af;
-      }
-
-      .card p {
-        margin-top: 10px;
-        font-size: 26px;
-        font-weight: bold;
-        color: #3fffd7;
-      }
-
-      /* ===== Table Section (Dynamic Height) ===== */
-      .table-section {
-        background: #171717;
-        padding: 22px;
-        border-radius: 22px;
-        flex: 1; /* ⭐ dynamic height */
-        overflow-y: auto;
-      }
-
-      .table-section h2 {
-        margin-bottom: 15px;
-        color: #3fffd7;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      th,
-      td {
-        padding: 14px;
-        border-bottom: 1px solid #1f2933;
-        text-align: left;
-      }
-
-      th {
-        color: #9ca3af;
-        font-weight: 500;
-      }
-
-      .success {
-        color: #22c55e;
-      }
-      .pending {
-        color: #facc15;
-      }
-      .failed {
-        color: #ef4444;
-      }
-
-      /* ==================================================
-         RESPONSIVE (BOOTSTRAP BREAKPOINT STYLE)
-         ================================================== */
-
-      /* xs & sm */
-      @media (max-width: 767px) {
-        .dashboard {
-          flex-direction: column;
-        }
-
-        .sidebar {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .sidebar nav {
-          display: flex;
-          gap: 10px;
-        }
-
-        .cards {
-          grid-template-columns: 1fr;
-        }
-
-        .topbar {
-          flex-direction: column;
-          gap: 10px;
-          text-align: center;
-        }
-      }
-
-      /* md */
-      @media (min-width: 768px) and (max-width: 991px) {
-        .cards {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .sidebar {
-          width: 180px;
-        }
-      }
-
-      /* lg+ */
-      @media (min-width: 992px) {
-        .cards {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./src/output.css" />
+    <title>Dashboard</title>
   </head>
-
-  <body>
-    <div class="dashboard">
+  <body class="bg-gray-100 font-sans">
+    <div class="flex h-screen">
       <!-- Sidebar -->
-      <aside class="sidebar">
-        <h2 class="logo">DashUI</h2>
-        <nav>
-          <a class="active">Dashboard</a>
-          <a>Users</a>
-          <a>Analytics</a>
-          <a>Settings</a>
-        </nav>
+      <aside class="w-64 bg-white shadow-lg p-6 flex flex-col justify-between">
+        <div>
+          <h1 class="text-2xl font-extrabold text-[#1A33B3] mb-8">Shopall</h1>
+
+          <nav class="space-y-3 font-semibold">
+            <a
+              href="#"
+              class="flex items-center gap-3 p-2 rounded-lg bg-indigo-50 text-[#1A33B3] font-semibold"
+            >
+              Dashboard
+            </a>
+            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100"
+              >Orders</a
+            >
+            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100"
+              >Products</a
+            >
+            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100"
+              >Customers</a
+            >
+            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100"
+              >Analytics</a
+            >
+            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100"
+              >Marketing</a
+            >
+            <a href="#" class="block p-2 rounded-lg hover:bg-gray-100"
+              >Finance</a
+            >
+          </nav>
+        </div>
+
+        <div class="text-sm text-gray-500">Settings</div>
       </aside>
 
-      <!-- Main -->
-      <main class="main">
-        <!-- Topbar -->
-        <header class="topbar">
-          <h1>Dashboard</h1>
-          <button class="profile" onclick="logout()">Logout</button>
-        </header>
+      <!-- Main Content -->
+      <main class="flex-1 p-8 overflow-y-auto">
+        <!-- Top Bar -->
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-3xl font-bold text-[#1A33B3] tracking-tight">
+            Dashboard
+          </h2>
 
-        <!-- Cards -->
-        <section class="cards">
-          <div class="card">
-            <h3>Total Users</h3>
-            <p>1,245</p>
+          <div class="flex items-center gap-4">
+            <button
+              onclick="logout()"
+              class="px-5 py-2 rounded-lg border bg-[#1A33B3] font-semibold cursor-pointer text-white transition hover:bg-black"
+            >
+              Logout
+            </button>
+            <div
+              class=""
+            >
+              <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+              <svg
+                width="28px"
+                height="28px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="12"
+                  cy="9"
+                  r="3"
+                  stroke="#000"
+                  stroke-width="1.5"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="#000"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M17.9691 20C17.81 17.1085 16.9247 15 11.9999 15C7.07521 15 6.18991 17.1085 6.03076 20"
+                  stroke="#1C274C"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
           </div>
-          <div class="card">
-            <h3>Revenue</h3>
-            <p>₹84,500</p>
-          </div>
-          <div class="card">
-            <h3>Orders</h3>
-            <p>320</p>
-          </div>
-        </section>
+        </div>
 
-        <!-- Table -->
-        <section class="table-section">
-          <h2>Recent Activity</h2>
-          <table>
-            <tr>
-              <th>Name</th>
-              <th>Status</th>
-              <th>Date</th>
-            </tr>
-            <tr>
-              <td>John</td>
-              <td class="success">Completed</td>
-              <td>08 Feb</td>
-            </tr>
-            <tr>
-              <td>Alice</td>
-              <td class="pending">Pending</td>
-              <td>07 Feb</td>
-            </tr>
-            <tr>
-              <td>Mark</td>
-              <td class="failed">Failed</td>
-              <td>06 Feb</td>
-            </tr>
-          </table>
-        </section>
+        <!-- Upgrade Banner -->
+        <div
+          class="bg-linear-to-r from-[#1A33B3] to-[#B794FF] text-white rounded-xl p-5 flex justify-between items-center mb-8 shadow"
+        >
+          <div>
+            <h3 class="font-semibold">
+              Upgrade to Pro for unlimited analytics & insights
+            </h3>
+          </div>
+          <button
+            class="bg-white text-[#1A33B3] px-4 py-2 rounded-lg font-semibold"
+          >
+            Upgrade Now
+          </button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-4 gap-6 mb-8">
+          <div class="bg-white p-5 rounded-xl shadow">
+            <p class="text-gray-500 text-sm">Revenue</p>
+            <h3 class="text-2xl font-bold mt-2">$124,542</h3>
+            <span class="text-green-500 text-sm">+41% from last month</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl shadow">
+            <p class="text-gray-500 text-sm">Total Sales</p>
+            <h3 class="text-2xl font-bold mt-2">12,562</h3>
+            <span class="text-green-500 text-sm">+41% from last month</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl shadow">
+            <p class="text-gray-500 text-sm">Total Orders</p>
+            <h3 class="text-2xl font-bold mt-2">7,532</h3>
+            <span class="text-red-500 text-sm">-50% from last month</span>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl shadow">
+            <p class="text-gray-500 text-sm">Profit</p>
+            <h3 class="text-2xl font-bold mt-2">$60,652</h3>
+            <span class="text-green-500 text-sm">+41% from last month</span>
+          </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-3 gap-6 mb-8">
+          <!-- Bar Chart Placeholder -->
+          <div class="col-span-2 bg-white p-6 rounded-xl shadow">
+            <h3 class="font-semibold mb-4">Total Sales</h3>
+            <div
+              class="h-60 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400"
+            >
+              Bar Chart Placeholder
+            </div>
+          </div>
+
+          <!-- Line Chart Placeholder -->
+          <div class="bg-white p-6 rounded-xl shadow">
+            <h3 class="font-semibold mb-4">Total Revenue</h3>
+            <div
+              class="h-60 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400"
+            >
+              Line Chart Placeholder
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Section -->
+        <!-- Last Sales Section -->
+        <div class="bg-white p-6 rounded-xl shadow">
+          <!-- Header -->
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-semibold text-lg">Last Sales</h3>
+
+            <div class="flex gap-3">
+              <button
+                class="px-4 py-2 text-sm border rounded-lg hover:bg-gray-50"
+              >
+                View All
+              </button>
+              <button
+                class="px-4 py-2 text-sm border rounded-lg hover:bg-gray-50"
+              >
+                Export
+              </button>
+            </div>
+          </div>
+
+          <!-- Column Labels -->
+          <div
+            class="grid grid-cols-6 text-xs text-gray-400 font-semibold px-4 mb-3"
+          >
+            <span>Client</span>
+            <span>Date</span>
+            <span>Price</span>
+            <span>Category</span>
+            <span>City</span>
+            <span>Status</span>
+          </div>
+
+          <!-- Sales Items -->
+          <div class="space-y-3">
+            <!-- Item -->
+            <div
+              class="grid grid-cols-6 items-center bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg text-sm"
+            >
+              <span class="font-medium">Savannah Nguyen</span>
+              <span>07/05/2025</span>
+              <span>$25.00</span>
+              <span>Clothes</span>
+              <span>Rabat</span>
+              <span>
+                <span
+                  class="px-3 py-1 text-xs bg-green-100 text-green-600 rounded-full"
+                >
+                  Completed
+                </span>
+              </span>
+            </div>
+
+            <div
+              class="grid grid-cols-6 items-center bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg text-sm"
+            >
+              <span class="font-medium">Jerome Bell</span>
+              <span>07/05/2025</span>
+              <span>$25.00</span>
+              <span>Shoes</span>
+              <span>Rabat</span>
+              <span>
+                <span
+                  class="px-3 py-1 text-xs bg-yellow-100 text-yellow-600 rounded-full"
+                >
+                  Pending
+                </span>
+              </span>
+            </div>
+
+            <div
+              class="grid grid-cols-6 items-center bg-gray-50 hover:bg-gray-100 transition p-4 rounded-lg text-sm"
+            >
+              <span class="font-medium">Darlene Robertson</span>
+              <span>07/05/2025</span>
+              <span>$25.00</span>
+              <span>Clothes</span>
+              <span>Rabat</span>
+              <span>
+                <span
+                  class="px-3 py-1 text-xs bg-blue-100 text-blue-600 rounded-full"
+                >
+                  In Progress
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
-
-    <script src="script.js"></script>
+    <script src="./script/script.js"></script>
   </body>
 </html>

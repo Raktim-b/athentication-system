@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+
+.wrpr {
+  font-family: "Mona Sans", sans-serif;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #1a33b3;
+}
+.wrpr::before {
+  content: "";
+  position: fixed;
+  inset: -20px;
+  background: url(../assets/Register-login-img.png) no-repeat center/cover;
+  filter: blur(12px);
+  z-index: -1;
+}
+
+.message.success {
+  color: #22c55e; /* green */
+}
+
+.message.error {
+  color: #ff6b6b; /* red */
+}

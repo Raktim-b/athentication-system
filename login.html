@@ -3,147 +3,94 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
+
+    <link rel="stylesheet" href="./src/output.css" />
+    <title>Login</title>
   </head>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
 
-    .container {
-      width: 100%;
-      height: 100%;
-      font-family: "Inter", sans-serif;
-      display: flex;
-      min-height: 100vh;
-      justify-content: center;
-      align-items: center;
-      background-color: #000; /* Dark background color */
+  <body class="">
+    <div class="wrpr">
+      <div class="flex min-h-screen items-center justify-center">
+        <div class="flex w-230 items-center bg-white p-3 rounded-[50px]">
+          <form
+            onsubmit="formSubmitLog(event)"
+            class="w-130 px-20 flex flex-col gap-1"
+          >
+            <!-- Heading -->
+            <h1
+              class="text-center text-black text-3xl tracking-tighter font-bold"
+            >
+              Welcome Back
+            </h1>
+            <p
+              class="text-black text-[12px] font-semibold tracking-tighter text-center mt-1 mb-6"
+            >
+              Log in to your account to continue
+            </p>
+            <!-- Email -->
+            <div
+              class="flex items-center rounded-full px-3 py-2 border-2 border-[#D1D5DB]"
+            >
+              <input
+                name="email"
+                type="email"
+                placeholder="Email"
+                class="bg-transparent outline-none w-full text-[#9CA3AF] font-semibold px-4"
+              />
+            </div>
+            <span
+              id="emailError"
+              class="text-red-400 text-xs ml-2 min-h-4 block"
+            ></span>
 
-      position: relative;
-      overflow: hidden;
-    }
+            <!-- Password -->
+            <div
+              class="flex items-center rounded-full px-3 py-2 border-2 border-[#D1D5DB]"
+            >
+              <input
+                name="pass"
+                type="password"
+                placeholder="Password"
+                class="bg-transparent outline-none w-full text-[#9CA3AF] font-semibold px-4"
+              />
+            </div>
+            <span
+              id="passError"
+              class="text-red-400 text-xs ml-2 min-h-4 block"
+            ></span>
 
-    .form {
-      display: flex;
-      flex-direction: column;
-      align-self: center;
-      font-family: inherit;
-      width: 350px;
-      gap: 1px;
-      padding-inline: 1.8em;
-      padding-bottom: 0.4em;
-      background-color: #171717;
-      border-radius: 15px;
-      position: relative;
-      z-index: 3;
-    }
+            <!-- Message -->
+            <p id="message" class="text-xs ml-2 min-h-4"></p>
 
-    .form-heading {
-      text-align: center;
-      margin: 2em 0 1em;
-      color: #64ffda;
-      font-size: 1.5em;
-      background-color: transparent;
-      align-self: center;
-    }
+            <!-- Button -->
+            <button
+              type="submit"
+              class="mt-2 mb-4 py-3 rounded-full border bg-[#1A33B3] text-white font-bold transition-all duration-300 hover:bg-black cursor-pointer"
+            >
+              Log In
+            </button>
 
-    .form-field {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5em;
-      border-radius: 40px;
-      padding: 0.8em;
-      border: none;
-      outline: none;
-      color: white;
-      background-color: #171717;
-      box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
-    }
-
-    .input-field {
-      background: none;
-      border: none;
-      outline: none;
-      width: 100%;
-      color: #ccd6f6;
-      padding-inline: 1em;
-    }
-
-    .sendMessage-btn {
-      cursor: pointer;
-      margin-block: 0.6em 3em;
-      padding: 1em;
-      border-radius: 40px;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      color: #64ffda;
-      font-weight: bold;
-      outline: 1px solid #64ffda;
-      transition: all ease-in-out 0.3s;
-    }
-
-    .sendMessage-btn:hover {
-      transition: all ease-in-out 0.3s;
-      background-color: #64ffda;
-      color: #000;
-      cursor: pointer;
-      /* box-shadow: inset 2px 5px 10px rgb(5, 5, 5); */
-    }
-    .error,
-    .success {
-      min-height: 16px;
-      color: #ff6b6b;
-      font-size: 12px;
-      margin-left: 10px;
-      margin-bottom: 8px;
-      display: block;
-    }
-    .message.success {
-      color: #22c55e; /* green */
-    }
-
-    .message.error {
-      color: #ff6b6b; /* red */
-    }
-  </style>
-  <body>
-    <div class="container">
-      <form class="form" onsubmit="formSubmitLog(event)">
-        <h1 class="form-heading">Log In</h1>
-
-        <div class="form-field">
-          <input
-            name="email"
-            placeholder="Email"
-            class="input-field"
-            type="email"
-          />
+            <!-- Redirect -->
+            <p class="text-center text-[12px] font-semibold tracking-tight">
+              Don't have any account?
+              <a href="./index.html" class="text-[#1A33B3] font-bold text-sm">
+                Register
+              </a>
+            </p>
+          </form>
+          <div class="w-100 h-140">
+            <img
+              src="./assets/Register-login-img.gif"
+              alt=""
+              class="w-full h-full object-cover rounded-[50px]"
+            />
+          </div>
         </div>
-        <span class="error" id="emailError"></span>
-        <div class="form-field">
-          <input
-            name="pass"
-            placeholder="Password"
-            class="input-field"
-            type="password"
-          />
-        </div>
-        <span class="error" id="passError"></span>
-        <p class="success message" id="message"></p>
-        <button type="submit" class="sendMessage-btn">Log In</button>
-      </form>
+      </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="./script/script.js"></script>
   </body>
 </html>
