@@ -130,7 +130,7 @@ const loginData = async (logInDetails, form) => {
       success.className = "message success";
       form.reset();
       setTimeout(() => {
-        // window.location.href = "dashboard.html";
+        window.location.href = "dashboard.html";
       }, 1000);
     } else {
       success.textContent = data.message;
