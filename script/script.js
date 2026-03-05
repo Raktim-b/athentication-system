@@ -145,7 +145,7 @@ const currentPage = window.location.pathname;
 
 if (currentPage.includes("dashboard.html")) {
   const token = localStorage.getItem("token");
-  // const user = localStorage.getItem("user");
+  const user = localStorage.getItem("user");
 
   // if (!token || !user) {
   if (!token) {
